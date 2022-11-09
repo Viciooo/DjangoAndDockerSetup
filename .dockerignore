@@ -1,0 +1,10 @@
+# Git
+.git/
+
+# Python
+venv/
+__pycache__/
+
+
+# Local PostgreSQL data
+data/

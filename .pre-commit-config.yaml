@@ -1,0 +1,40 @@
+repos:
+  - repo: 'https://github.com/ambv/black'
+    rev: 22.10.0
+    hooks:
+      - id: black
+        language_version: python3.10
+        args:
+          - '--line-length=100'
+  - repo: 'https://github.com/pycqa/isort'
+    rev: 5.10.1
+    hooks:
+      - id: isort
+        args:
+          - '--settings-file=setup.cfg'
+  - repo: 'https://gitlab.com/pycqa/flake8'
+    rev: 4.0.1
+    hooks:
+      - id: flake8
+        language_version: python3.10
+        args:
+          - '--config=setup.cfg'
+        additional_dependencies:
+          - flake8-eradicate==1.2.0
+          - flake8-isort==4.1.1
+          - flake8-commas==2.1.0
+          - flake8-bugbear==22.1.11
+          - flake8-comprehensions==3.8.0
+          - flake8-pytest==1.3
+          - flake8-print==4.0.0
+          - flake8-pytest-style==1.6.0
+          - flake8-debugger==4.0.0
+  - repo: 'https://github.com/pre-commit/mirrors-mypy'
+    rev: v0.931
+    hooks:
+      - id: mypy
+        language_version: python3.10
+        entry: bash -c 'mypy "app" || true' --
+        args:
+          - '--no-strict-optional'
+          - '--ignore-missing-imports'
